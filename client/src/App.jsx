@@ -8,7 +8,12 @@ let pokeArr = [
   {name:"Charmandar",type:"fire",power: 77},
   {name:"Squirtle",type:"water",power: 81},
   {name:"Pikachu",type:"electric",power: 90},
-  {name:"Pidgeotto",type:"flying",power: 75}
+  {name:"Pidgeotto",type:"flying",power: 75},
+  {name:"Gengar",type:"ghost",power: 84},
+  {name:"Onix",type:"rock",power: 72},
+  {name:"Tauros",type:"normal",power: 66},
+  {name:"Hypno",type:"psychic",power: 83},
+  {name:"Butterfree",type:"bug",power: 68}
 ]
 
 function App() {
