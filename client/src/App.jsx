@@ -1,8 +1,19 @@
-import react from "react";
+import react,{useState} from "react";
 import { Container, Typography,Box,Button,IconButton } from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import Home from "./pages/Home";
+
+let pokeArr = [
+  {name:"Bulbasaur",type:"grass",power: 86},
+  {name:"Charmandar",type:"fire",power: 77},
+  {name:"Squirtle",type:"water",power: 81},
+  {name:"Pikachu",type:"electric",power: 90},
+  {name:"Pidgeotto",type:"flying",power: 75}
+]
 
 function App() {
+  
+  const [pokemonArray, setPokemonArray] = useState(pokeArr);
 
   return (
     <>
@@ -14,6 +25,7 @@ function App() {
         </Box>
       </Container>
       <hr style={{width: '20%', backgroundColor: 'gray', height: '0.5px'}}/>
+      <Home pokemonArray={pokemonArray}/>
     </>
   )
 }
