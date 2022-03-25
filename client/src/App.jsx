@@ -29,7 +29,19 @@ function App() {
         <Typography variant="h3" gutterBottom fontWeight='fontWeightBold' textAlign='center' color="initial">Pokemons Collection App</Typography>
 
         <Box sx={{ p: 2, borderRadius: '50%',height: '40px', width: '40px',display: 'flex', justifyContent: 'center', alignItems: 'center',mb: 2 }}>
-          <IconButton variant="text"><AddCircleOutlineOutlinedIcon sx={{ fontSize: 60,color: 'green' }} onClick={()=>{setOpsDrawerOpen(true)}}/></IconButton>
+          <IconButton variant="text">
+            {
+              opsDrawerOpen ? 
+              <AddCircleOutlineOutlinedIcon 
+                sx={{ fontSize: 60,color: 'red',transform: 'rotateZ(45deg)',transition: 'all 0.5s' }} 
+                onClick={()=>{setOpsDrawerOpen(true)}}
+              />:
+              <AddCircleOutlineOutlinedIcon 
+                sx={{ fontSize: 60,color: 'green',transition: 'all 0.5s' }} 
+                onClick={()=>{setOpsDrawerOpen(true)}}
+              />
+            }
+          </IconButton>
         </Box>
       </Container>
       <hr style={{width: '20%', backgroundColor: 'gray', height: '0.5px'}}/>
