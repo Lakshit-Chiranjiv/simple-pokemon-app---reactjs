@@ -3,6 +3,7 @@ import { Container, Typography,Box,Button,IconButton } from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import Home from "./pages/Home";
 import OpsPanel from "./components/OpsPanel";
+import AddModal from "./components/AddModal";
 
 let pokeArr = [
   {name:"Bulbasaur",type:"grass",power: 86},
@@ -23,22 +24,27 @@ function App() {
 
   const [opsDrawerOpen,setOpsDrawerOpen] = useState(false);
 
+  const [addModalOpen,setAddModalOpen] = useState(false);
+  const [addPokemonName,setAddPokemonName] = useState('');
+  const [addPokemonType,setAddPokemonType] = useState('Grass');
+  const [addPokemonPower,setAddPokemonPower] = useState(50);
+
+
+
   return (
     <>
       <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2,mt: 5 }}>
         <Typography variant="h3" gutterBottom fontWeight='fontWeightBold' textAlign='center' color="initial">Pokemons Collection App</Typography>
 
         <Box sx={{ p: 2, borderRadius: '50%',height: '40px', width: '40px',display: 'flex', justifyContent: 'center', alignItems: 'center',mb: 2 }}>
-          <IconButton variant="text">
+          <IconButton variant="text" onClick={()=>{setOpsDrawerOpen(true)}}>
             {
               opsDrawerOpen ? 
               <AddCircleOutlineOutlinedIcon 
                 sx={{ fontSize: 60,color: 'red',transform: 'rotateZ(45deg)',transition: 'all 0.5s' }} 
-                onClick={()=>{setOpsDrawerOpen(true)}}
               />:
               <AddCircleOutlineOutlinedIcon 
                 sx={{ fontSize: 60,color: 'green',transition: 'all 0.5s' }} 
-                onClick={()=>{setOpsDrawerOpen(true)}}
               />
             }
           </IconButton>
@@ -46,7 +52,17 @@ function App() {
       </Container>
       <hr style={{width: '20%', backgroundColor: 'gray', height: '0.5px'}}/>
       <Home pokemonArray={pokemonArray}/>
-      <OpsPanel drawerOpen={opsDrawerOpen} setDrawerOpen={setOpsDrawerOpen} />
+      <OpsPanel drawerOpen={opsDrawerOpen} setDrawerOpen={setOpsDrawerOpen} setAddModalOpen={setAddModalOpen} />
+      <AddModal 
+        addModalOpen={addModalOpen} 
+        setAddModalOpen={setAddModalOpen}
+        addPokemonName={addPokemonName}
+        setAddPokemonName={setAddPokemonName}
+        addPokemonType={addPokemonType} 
+        setAddPokemonType={setAddPokemonType}
+        addPokemonPower={addPokemonPower} 
+        setAddPokemonPower={setAddPokemonPower} 
+      />
     </>
   )
 }

@@ -3,7 +3,7 @@ import { Drawer } from '@mui/material'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-const OpsPanel = ({drawerOpen,setDrawerOpen}) => {
+const OpsPanel = ({drawerOpen,setDrawerOpen,setAddModalOpen}) => {
   return (
     <Drawer
         onClick={()=>{setDrawerOpen(false)}}
@@ -18,7 +18,9 @@ const OpsPanel = ({drawerOpen,setDrawerOpen}) => {
             justifyContent="center"
             alignItems="center"
         >
-        <Button variant="contained" size='large' color='success'>Add a Pokemon</Button>
+        <Button variant="contained" size='large' color='success' onClick={()=>{
+          setAddModalOpen(true);
+        }}>Add a Pokemon</Button>
         <Button variant="contained" size='large' color='warning'>Search Pokemons by name</Button>
         <Button variant="contained" size='large' color='primary'>Search Pokemons by type</Button>
         <Button variant="contained" size='large' color='secondary'>Generate a Random Pokemon</Button>
