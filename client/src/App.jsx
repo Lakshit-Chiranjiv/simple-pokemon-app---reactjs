@@ -50,6 +50,10 @@ function App() {
     return (typeSearchValue !== '' && pokemon.type.toLowerCase().includes(typeSearchValue.toLowerCase()));
   })
 
+  const generateRandomPokemon = () => {
+    return pokemonArray[Math.floor(Math.random()*pokemonArray.length)];
+  }
+
   return (
     <>
       <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2,mt: 3 }}>
@@ -128,6 +132,7 @@ function App() {
       <RandomModal
         randomModalOpen={randomModalOpen}
         setRandomModalOpen={setRandomModalOpen}
+        generateRandomPokemon={generateRandomPokemon}
       />
     </>
   )

@@ -1,7 +1,16 @@
 import { Box, Button, Modal, Typography } from '@mui/material'
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
-const RandomModal = ({randomModalOpen,setRandomModalOpen}) => {
+
+const RandomModal = ({randomModalOpen,setRandomModalOpen,generateRandomPokemon}) => {
+
+    const [randomPokemonObj,setRandomPokemonObj] = useState({});
+
+    useEffect(() => {
+        setRandomPokemonObj(generateRandomPokemon());      
+    }, [])
+    
+
   return (
     <div>
           <Modal 
@@ -28,16 +37,17 @@ const RandomModal = ({randomModalOpen,setRandomModalOpen}) => {
                         Random Generated Pokemon
                     </Typography>
                     <Typography variant="h6" color="initial" align='center' sx={{fontWeight: 800,mt: 3}}>
-                        Bulbasaur
+                        {randomPokemonObj.name}
                     </Typography>
                     <Typography variant="body1" color="initial" align='center' mb={4}>
-                        {'Grass'.toUpperCase()}
+                        {String(randomPokemonObj.type).toUpperCase()}
                     </Typography>
                     <Button
                         variant="contained" 
                         color='secondary'
                         fullWidth
                         onClick={()=>{
+                            setRandomPokemonObj(generateRandomPokemon());
                         }}
                     >
                         GENERATE ANOTHER POKEMON
