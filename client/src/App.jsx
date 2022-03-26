@@ -4,6 +4,8 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import Home from "./pages/Home";
 import OpsPanel from "./components/OpsPanel";
 import AddModal from "./components/AddModal";
+import SearchBar from "./components/SearchBar";
+import ToggleButtons from "./components/ToggleButtons";
 
 let pokeArr = [
   {name:"Bulbasaur",type:"grass",power: 86},
@@ -29,15 +31,18 @@ function App() {
   const [addPokemonType,setAddPokemonType] = useState('Grass');
   const [addPokemonPower,setAddPokemonPower] = useState(50);
 
+  const [searchBarToggle,setSearchBarToggle] = useState('name');
+  const [showSearchByNameBar,setShowSearchByNameBar] = useState(false);
+  const [showSearchByTypeBar,setShowSearchByTypeBar] = useState(false);
 
 
   return (
     <>
-      <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2,mt: 5 }}>
-        <Typography variant="h3" gutterBottom fontWeight='fontWeightBold' textAlign='center' color="initial">Pokemons Collection App</Typography>
+      <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2,mt: 3 }}>
+        <Typography variant="h3" fontWeight='fontWeightBold' textAlign='center' color="initial">Pokemons Collection App</Typography>
 
         <Box sx={{ p: 2, borderRadius: '50%',height: '40px', width: '40px',display: 'flex', justifyContent: 'center', alignItems: 'center',mb: 2 }}>
-          <IconButton variant="text" onClick={()=>{setOpsDrawerOpen(true)}}>
+          <IconButton sx={{mt:2}} variant="text" onClick={()=>{setOpsDrawerOpen(true)}}>
             {
               opsDrawerOpen ? 
               <AddCircleOutlineOutlinedIcon 
@@ -50,9 +55,42 @@ function App() {
           </IconButton>
         </Box>
       </Container>
+
       <hr style={{width: '20%', backgroundColor: 'gray', height: '0.5px'}}/>
+
+      {
+        (showSearchByNameBar || showSearchByTypeBar) &&
+
+        <ToggleButtons
+          searchBarToggle={searchBarToggle}
+          setSearchBarToggle={setSearchBarToggle}
+          setShowSearchByNameBar={setShowSearchByNameBar}
+          setShowSearchByTypeBar={setShowSearchByTypeBar}
+        />
+      }
+
+      {
+        (showSearchByNameBar || showSearchByTypeBar) &&
+        
+        <SearchBar
+          showSearchByNameBar={showSearchByNameBar}
+          showSearchByTypeBar={showSearchByTypeBar}
+          setShowSearchByNameBar={setShowSearchByNameBar}
+          setShowSearchByTypeBar={setShowSearchByTypeBar}
+        />
+      }
+
       <Home pokemonArray={pokemonArray}/>
-      <OpsPanel drawerOpen={opsDrawerOpen} setDrawerOpen={setOpsDrawerOpen} setAddModalOpen={setAddModalOpen} />
+      
+      <OpsPanel 
+        drawerOpen={opsDrawerOpen} 
+        setDrawerOpen={setOpsDrawerOpen} 
+        setAddModalOpen={setAddModalOpen} 
+        setShowSearchByNameBar={setShowSearchByNameBar}
+        setShowSearchByTypeBar={setShowSearchByTypeBar}
+        setSearchBarToggle={setSearchBarToggle}
+      />
+      
       <AddModal 
         addModalOpen={addModalOpen} 
         setAddModalOpen={setAddModalOpen}
