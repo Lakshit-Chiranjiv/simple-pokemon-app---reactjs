@@ -11,6 +11,8 @@ const SearchBar = ({showSearchByNameBar,showSearchByTypeBar,setShowSearchByNameB
     else if(showSearchByTypeBar){
       setShowSearchByTypeBar(false);
     }
+    setNameSearchValue('');
+    setTypeSearchValue('');
   }
   
   return (
