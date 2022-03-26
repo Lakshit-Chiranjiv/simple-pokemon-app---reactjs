@@ -35,6 +35,17 @@ function App() {
   const [showSearchByNameBar,setShowSearchByNameBar] = useState(false);
   const [showSearchByTypeBar,setShowSearchByTypeBar] = useState(false);
 
+  const [nameSearchValue,setNameSearchValue] = useState('');
+  const [typeSearchValue,setTypeSearchValue] = useState('');
+
+
+  let filteredNameArray = pokemonArray.filter((pokemon)=>{
+    return (nameSearchValue !== '' && pokemon.name.toLowerCase().includes(nameSearchValue.toLowerCase()));
+  })
+
+  let filteredTypeArray = pokemonArray.filter((pokemon)=>{
+    return (typeSearchValue !== '' && pokemon.type.toLowerCase().includes(typeSearchValue.toLowerCase()));
+  })
 
   return (
     <>
@@ -77,10 +88,18 @@ function App() {
           showSearchByTypeBar={showSearchByTypeBar}
           setShowSearchByNameBar={setShowSearchByNameBar}
           setShowSearchByTypeBar={setShowSearchByTypeBar}
+          setNameSearchValue={setNameSearchValue}
+          setTypeSearchValue={setTypeSearchValue}
         />
       }
 
-      <Home pokemonArray={pokemonArray}/>
+      <Home 
+        pokemonArray={pokemonArray}
+        filteredNameArray={filteredNameArray}
+        filteredTypeArray={filteredTypeArray}
+        showSearchByNameBar={showSearchByNameBar}
+        showSearchByTypeBar={showSearchByTypeBar}
+      />
       
       <OpsPanel 
         drawerOpen={opsDrawerOpen} 

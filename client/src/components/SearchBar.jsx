@@ -2,7 +2,7 @@ import { Box, Button, TextField } from '@mui/material'
 import React from 'react'
 
 
-const SearchBar = ({showSearchByNameBar,showSearchByTypeBar,setShowSearchByNameBar,setShowSearchByTypeBar}) => {
+const SearchBar = ({showSearchByNameBar,showSearchByTypeBar,setShowSearchByNameBar,setShowSearchByTypeBar,setNameSearchValue,setTypeSearchValue}) => {
 
   const handleSearchClose = () =>{
     if(showSearchByNameBar){
@@ -23,6 +23,7 @@ const SearchBar = ({showSearchByNameBar,showSearchByTypeBar,setShowSearchByNameB
             label='Enter Pokemon Name to search'
             color='warning'
             sx={{ width: '80%'}}
+            onChange={(e)=>{setNameSearchValue(e.target.value)}}
           />
         }
         {
@@ -32,6 +33,7 @@ const SearchBar = ({showSearchByNameBar,showSearchByTypeBar,setShowSearchByNameB
             label='Enter Pokemon Type to search'
             color='warning'
             sx={{ width: '80%'}}
+            onChange={(e)=>{setTypeSearchValue(e.target.value)}}
           />
         }
         <Button
