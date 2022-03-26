@@ -3,7 +3,7 @@ import { Drawer } from '@mui/material'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-const OpsPanel = ({drawerOpen,setDrawerOpen,setAddModalOpen,setShowSearchByNameBar,setShowSearchByTypeBar,setSearchBarToggle}) => {
+const OpsPanel = ({drawerOpen,setDrawerOpen,setAddModalOpen,setShowSearchByNameBar,setShowSearchByTypeBar,setSearchBarToggle,setRandomModalOpen}) => {
   return (
     <Drawer
         onClick={()=>{setDrawerOpen(false)}}
@@ -31,7 +31,9 @@ const OpsPanel = ({drawerOpen,setDrawerOpen,setAddModalOpen,setShowSearchByNameB
             setSearchBarToggle('type')
             setShowSearchByNameBar(false)
           }}>Search Pokemons by type</Button>
-          <Button variant="contained" size='large' color='secondary'>Generate a Random Pokemon</Button>
+          <Button variant="contained" size='large' color='secondary' onClick={()=>{
+            setRandomModalOpen(true)
+          }}>Generate a Random Pokemon</Button>
         </Stack>
     </Drawer>
   )

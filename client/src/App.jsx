@@ -6,6 +6,7 @@ import OpsPanel from "./components/OpsPanel";
 import AddModal from "./components/AddModal";
 import SearchBar from "./components/SearchBar";
 import ToggleButtons from "./components/ToggleButtons";
+import RandomModal from "./components/RandomModal";
 
 let pokeArr = [
   {name:"Bulbasaur",type:"grass",power: 86},
@@ -37,6 +38,8 @@ function App() {
 
   const [nameSearchValue,setNameSearchValue] = useState('');
   const [typeSearchValue,setTypeSearchValue] = useState('');
+
+  const [randomModalOpen,setRandomModalOpen] = useState(false);
 
 
   let filteredNameArray = pokemonArray.filter((pokemon)=>{
@@ -108,6 +111,7 @@ function App() {
         setShowSearchByNameBar={setShowSearchByNameBar}
         setShowSearchByTypeBar={setShowSearchByTypeBar}
         setSearchBarToggle={setSearchBarToggle}
+        setRandomModalOpen={setRandomModalOpen}
       />
       
       <AddModal 
@@ -119,6 +123,11 @@ function App() {
         setAddPokemonType={setAddPokemonType}
         addPokemonPower={addPokemonPower} 
         setAddPokemonPower={setAddPokemonPower} 
+      />
+
+      <RandomModal
+        randomModalOpen={randomModalOpen}
+        setRandomModalOpen={setRandomModalOpen}
       />
     </>
   )
