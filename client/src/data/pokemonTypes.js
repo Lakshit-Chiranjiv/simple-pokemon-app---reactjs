@@ -1,20 +1,44 @@
 const pokemonTypes = [
     {
-      value: 'Grass',
+      value: 'grass',
       label: 'Grass',
     },
     {
-      value: 'Fire',
+      value: 'fire',
       label: 'Fire',
     },
     {
-      value: 'Water',
+      value: 'water',
       label: 'Water',
     },
     {
-      value: 'Electric',
+      value: 'electric',
       label: 'Electric',
     },
+    {
+      value: 'normal',
+      label: 'Normal',
+    },
+    {
+      value: 'ghost',
+      label: 'Ghost',
+    },
+    {
+      value: 'psychic',
+      label: 'Psychic',
+    },
+    {
+      value: 'flying',
+      label: 'Flying',
+    },
+    {
+      value: 'rock',
+      label: 'Rock',
+    },
+    {
+      value: 'bug',
+      label: 'Bug',
+    }
   ];
 
   export default pokemonTypes;

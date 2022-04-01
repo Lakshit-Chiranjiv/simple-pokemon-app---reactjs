@@ -1,4 +1,4 @@
-import { Box, Button, MenuItem, Modal, TextField, Typography } from '@mui/material'
+import { Box, Button, MenuItem, Modal, TextField, Typography} from '@mui/material'
 import React from 'react'
 import pokemonTypes from '../data/pokemonTypes'
 
@@ -51,6 +51,7 @@ const AddModal = ({addModalOpen, setAddModalOpen,addPokemonName,setAddPokemonNam
                         
                     ))}
                   </TextField>
+
 
                   <TextField 
                     label="Pokemon Power" 

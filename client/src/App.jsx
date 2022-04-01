@@ -7,6 +7,7 @@ import AddModal from "./components/AddModal";
 import SearchBar from "./components/SearchBar";
 import ToggleButtons from "./components/ToggleButtons";
 import RandomModal from "./components/RandomModal";
+import EditModal from "./components/EditModal";
 
 let pokeArr = [
   {name:"Bulbasaur",type:"grass",power: 86},
@@ -18,7 +19,8 @@ let pokeArr = [
   {name:"Onix",type:"rock",power: 72},
   {name:"Tauros",type:"normal",power: 66},
   {name:"Hypno",type:"psychic",power: 83},
-  {name:"Butterfree",type:"bug",power: 68}
+  {name:"Butterfree",type:"bug",power: 68},
+  {name:"Beedrill",type:"bug",power: 71}
 ]
 
 function App() {
@@ -29,8 +31,13 @@ function App() {
 
   const [addModalOpen,setAddModalOpen] = useState(false);
   const [addPokemonName,setAddPokemonName] = useState('');
-  const [addPokemonType,setAddPokemonType] = useState('Grass');
+  const [addPokemonType,setAddPokemonType] = useState('grass');
   const [addPokemonPower,setAddPokemonPower] = useState(50);
+
+  const [editModalOpen,setEditModalOpen] = useState(false);
+  const [editPokemonName,setEditPokemonName] = useState('');
+  const [editPokemonType,setEditPokemonType] = useState('');
+  const [editPokemonPower,setEditPokemonPower] = useState(0);
 
   const [searchBarToggle,setSearchBarToggle] = useState('name');
   const [showSearchByNameBar,setShowSearchByNameBar] = useState(false);
@@ -106,6 +113,13 @@ function App() {
         filteredTypeArray={filteredTypeArray}
         showSearchByNameBar={showSearchByNameBar}
         showSearchByTypeBar={showSearchByTypeBar}
+        setEditModalOpen={setEditModalOpen}
+        editPokemonName={editPokemonName}
+        setEditPokemonName={setEditPokemonName}
+        editPokemonType={editPokemonType} 
+        setEditPokemonType={setEditPokemonType}
+        editPokemonPower={editPokemonPower} 
+        setEditPokemonPower={setEditPokemonPower}
       />
       
       <OpsPanel 
@@ -127,6 +141,17 @@ function App() {
         setAddPokemonType={setAddPokemonType}
         addPokemonPower={addPokemonPower} 
         setAddPokemonPower={setAddPokemonPower} 
+      />
+
+      <EditModal
+        editModalOpen={editModalOpen}
+        setEditModalOpen={setEditModalOpen}
+        editPokemonName={editPokemonName}
+        setEditPokemonName={setEditPokemonName}
+        editPokemonType={editPokemonType} 
+        setEditPokemonType={setEditPokemonType}
+        editPokemonPower={editPokemonPower} 
+        setEditPokemonPower={setEditPokemonPower} 
       />
 
       <RandomModal
