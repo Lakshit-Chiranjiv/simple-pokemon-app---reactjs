@@ -1,4 +1,4 @@
-import react,{useState} from "react";
+import react,{useState,useEffect} from "react";
 import { Container, Typography,Box,Button,IconButton } from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import Home from "./pages/Home";
@@ -9,6 +9,7 @@ import ToggleButtons from "./components/ToggleButtons";
 import RandomModal from "./components/RandomModal";
 import EditModal from "./components/EditModal";
 import DeleteModal from "./components/DeleteModal";
+import axios from 'axios';
 
 let pokeArr = [
   {name:"Bulbasaur",type:"grass",power: 86},
@@ -51,6 +52,12 @@ function App() {
   const [typeSearchValue,setTypeSearchValue] = useState('');
 
   const [randomModalOpen,setRandomModalOpen] = useState(false);
+
+  useEffect(async()=>{
+    const responseData = await axios.get('http://localhost:8000/pokemon/getAll');
+    setPokemonArray(responseData.data);
+    // console.log(responseData.data);
+  },[])
 
 
   let filteredNameArray = pokemonArray.filter((pokemon)=>{
