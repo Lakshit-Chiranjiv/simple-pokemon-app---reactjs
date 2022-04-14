@@ -3,7 +3,7 @@ import React from 'react'
 import PokemonCard from '../components/PokemonCard'
 
 
-const Home = ({pokemonArray,filteredNameArray,filteredTypeArray,showSearchByNameBar,showSearchByTypeBar,setEditModalOpen,editPokemonName,setEditPokemonName,editPokemonType,setEditPokemonType,editPokemonPower,setEditPokemonPower}) => {
+const Home = ({pokemonArray,filteredNameArray,filteredTypeArray,showSearchByNameBar,showSearchByTypeBar,setEditModalOpen,editPokemonName,setEditPokemonName,editPokemonType,setEditPokemonType,editPokemonPower,setEditPokemonPower,setDeleteModalOpen,setDeletePokemonName}) => {
   return (
     <Container sx={{ display: 'flex',flexWrap: 'wrap'}}>
         {
@@ -31,6 +31,8 @@ const Home = ({pokemonArray,filteredNameArray,filteredTypeArray,showSearchByName
                       setEditPokemonType={setEditPokemonType}
                       editPokemonPower={editPokemonPower} 
                       setEditPokemonPower={setEditPokemonPower}
+                      setDeleteModalOpen={setDeleteModalOpen}
+                      setDeletePokemonName={setDeletePokemonName}
                   />
           })
         }

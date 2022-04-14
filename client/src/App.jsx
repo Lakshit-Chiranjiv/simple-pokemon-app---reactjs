@@ -8,6 +8,7 @@ import SearchBar from "./components/SearchBar";
 import ToggleButtons from "./components/ToggleButtons";
 import RandomModal from "./components/RandomModal";
 import EditModal from "./components/EditModal";
+import DeleteModal from "./components/DeleteModal";
 
 let pokeArr = [
   {name:"Bulbasaur",type:"grass",power: 86},
@@ -38,6 +39,9 @@ function App() {
   const [editPokemonName,setEditPokemonName] = useState('');
   const [editPokemonType,setEditPokemonType] = useState('');
   const [editPokemonPower,setEditPokemonPower] = useState(0);
+
+  const [deleteModalOpen,setDeleteModalOpen] = useState(false);
+  const [deletePokemonName,setDeletePokemonName] = useState('');
 
   const [searchBarToggle,setSearchBarToggle] = useState('name');
   const [showSearchByNameBar,setShowSearchByNameBar] = useState(false);
@@ -120,6 +124,8 @@ function App() {
         setEditPokemonType={setEditPokemonType}
         editPokemonPower={editPokemonPower} 
         setEditPokemonPower={setEditPokemonPower}
+        setDeleteModalOpen={setDeleteModalOpen}
+        setDeletePokemonName={setDeletePokemonName}
       />
       
       <OpsPanel 
@@ -158,6 +164,12 @@ function App() {
         randomModalOpen={randomModalOpen}
         setRandomModalOpen={setRandomModalOpen}
         generateRandomPokemon={generateRandomPokemon}
+      />
+
+      <DeleteModal
+        deleteModalOpen={deleteModalOpen}
+        setDeleteModalOpen={setDeleteModalOpen}
+        deletePokemonName={deletePokemonName}
       />
     </>
   )
