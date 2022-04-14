@@ -45,7 +45,7 @@ const EditModal = ({editModalOpen,setEditModalOpen,editPokemonName,setEditPokemo
                     helperText="Please select your pokemon type"
                     variant='outlined'
                     color='warning'
-                    value={editPokemonType}
+                    value={editPokemonType.toLowerCase()}
                     fullWidth
                 >
                 {pokemonTypes.map((option) => (
