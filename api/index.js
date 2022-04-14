@@ -1,9 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import { MONGO_DB_URI } from './dbConfig.js';
 import pokemonRouter from "./routes/pokemonRoutes.js";
 import bodyParser from 'body-parser';
 const app = express();
+
+app.use(cors());
 
 mongoose.connect(MONGO_DB_URI)
 .then(()=>{console.log("Connected to database")})
