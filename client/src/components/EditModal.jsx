@@ -1,8 +1,9 @@
 import { Box, Button, MenuItem, Modal, TextField, Typography } from '@mui/material'
+import axios from 'axios'
 import React from 'react'
 import pokemonTypes from '../data/pokemonTypes'
 
-const EditModal = ({editModalOpen,setEditModalOpen,editPokemonName,setEditPokemonName,editPokemonType,setEditPokemonType,editPokemonPower,setEditPokemonPower}) => {
+const EditModal = ({setPokemonArray,editModalOpen,setEditModalOpen,editPokemonId,editPokemonName,setEditPokemonName,editPokemonType,setEditPokemonType,editPokemonPower,setEditPokemonPower}) => {
   return (
     <div>
         <Modal 
@@ -71,8 +72,15 @@ const EditModal = ({editModalOpen,setEditModalOpen,editPokemonName,setEditPokemo
                     variant="contained" 
                     color='warning'
                     fullWidth
-                    onClick={()=>{
+                    onClick={async()=>{
                         setEditModalOpen(false)
+                        const response = await axios.patch(`http://localhost:8000/pokemon/update/${editPokemonId}`,{
+                            name: editPokemonName,
+                            type: editPokemonType,
+                            power: editPokemonPower
+                        })
+                        const responseData = await axios.get('http://localhost:8000/pokemon/getAll');
+                        setPokemonArray(responseData.data);
                     }}
                 >
                     UPDATE POKEMON

@@ -1,7 +1,8 @@
 import { Box, Button, Modal,Stack,Typography } from '@mui/material'
+import axios from 'axios'
 import React from 'react'
 
-const DeleteModal = ({deleteModalOpen,setDeleteModalOpen,deletePokemonName}) => {
+const DeleteModal = ({setPokemonArray,deleteModalOpen,setDeleteModalOpen,deletePokemonId,deletePokemonName}) => {
   return (
     <div>
         <Modal 
@@ -47,8 +48,11 @@ const DeleteModal = ({deleteModalOpen,setDeleteModalOpen,deletePokemonName}) => 
                     <Button
                         variant="contained" 
                         color='error'
-                        onClick={()=>{
+                        onClick={async()=>{
                             setDeleteModalOpen(false)
+                            const response = await axios.delete(`http://localhost:8000/pokemon/delete/${deletePokemonId}`);
+                            const responseData = await axios.get('http://localhost:8000/pokemon/getAll');
+                            setPokemonArray(responseData.data);
                         }}
                         sx={{width: '50%'}}
                     >

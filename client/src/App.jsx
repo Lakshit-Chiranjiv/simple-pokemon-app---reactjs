@@ -37,11 +37,13 @@ function App() {
   const [addPokemonPower,setAddPokemonPower] = useState(50);
 
   const [editModalOpen,setEditModalOpen] = useState(false);
+  const [editPokemonId,setEditPokemonId] = useState('');
   const [editPokemonName,setEditPokemonName] = useState('');
   const [editPokemonType,setEditPokemonType] = useState('');
   const [editPokemonPower,setEditPokemonPower] = useState(0);
 
   const [deleteModalOpen,setDeleteModalOpen] = useState(false);
+  const [deletePokemonId,setDeletePokemonId] = useState('');
   const [deletePokemonName,setDeletePokemonName] = useState('');
 
   const [searchBarToggle,setSearchBarToggle] = useState('name');
@@ -56,6 +58,7 @@ function App() {
   useEffect(async()=>{
     const responseData = await axios.get('http://localhost:8000/pokemon/getAll');
     setPokemonArray(responseData.data);
+    console.log(pokemonArray);
     // console.log(responseData.data);
   },[])
 
@@ -125,6 +128,7 @@ function App() {
         showSearchByNameBar={showSearchByNameBar}
         showSearchByTypeBar={showSearchByTypeBar}
         setEditModalOpen={setEditModalOpen}
+        setEditPokemonId={setEditPokemonId}
         editPokemonName={editPokemonName}
         setEditPokemonName={setEditPokemonName}
         editPokemonType={editPokemonType} 
@@ -132,6 +136,7 @@ function App() {
         editPokemonPower={editPokemonPower} 
         setEditPokemonPower={setEditPokemonPower}
         setDeleteModalOpen={setDeleteModalOpen}
+        setDeletePokemonId={setDeletePokemonId}
         setDeletePokemonName={setDeletePokemonName}
       />
       
@@ -158,8 +163,10 @@ function App() {
       />
 
       <EditModal
+        setPokemonArray={setPokemonArray}
         editModalOpen={editModalOpen}
         setEditModalOpen={setEditModalOpen}
+        editPokemonId={editPokemonId}
         editPokemonName={editPokemonName}
         setEditPokemonName={setEditPokemonName}
         editPokemonType={editPokemonType} 
@@ -175,8 +182,10 @@ function App() {
       />
 
       <DeleteModal
+        setPokemonArray={setPokemonArray}
         deleteModalOpen={deleteModalOpen}
         setDeleteModalOpen={setDeleteModalOpen}
+        deletePokemonId={deletePokemonId}
         deletePokemonName={deletePokemonName}
       />
     </>

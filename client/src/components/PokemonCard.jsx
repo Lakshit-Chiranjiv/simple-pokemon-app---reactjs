@@ -6,7 +6,7 @@ import { red } from '@mui/material/colors';
 
 const delIconColor = red[500];
 
-const PokemonCard = ({pokemon,setEditModalOpen,editPokemonName,setEditPokemonName,editPokemonType,setEditPokemonType,editPokemonPower,setEditPokemonPower,setDeleteModalOpen,setDeletePokemonName}) => {
+const PokemonCard = ({pokemon,setEditModalOpen,setEditPokemonId,editPokemonName,setEditPokemonName,editPokemonType,setEditPokemonType,editPokemonPower,setEditPokemonPower,setDeleteModalOpen,setDeletePokemonId,setDeletePokemonName}) => {
   return (
     <Paper elevation={6} sx={{ m: 2,width: '25%',display: 'flex',p: 3 }}>
         <div style={{marginRight: 'auto'}}>
@@ -17,6 +17,7 @@ const PokemonCard = ({pokemon,setEditModalOpen,editPokemonName,setEditPokemonNam
             <IconButton onClick={() => {
                 setDeleteModalOpen(true)
                 setDeletePokemonName(pokemon.name)
+                setDeletePokemonId(pokemon._id)
             }}>
                 <DeleteRoundedIcon sx={{ color: delIconColor }} />
             </IconButton>
@@ -27,6 +28,7 @@ const PokemonCard = ({pokemon,setEditModalOpen,editPokemonName,setEditPokemonNam
                 setEditPokemonName(pokemon.name)
                 setEditPokemonType(pokemon.type)
                 setEditPokemonPower(pokemon.power)
+                setEditPokemonId(pokemon._id)
                 console.log('edit modal open')
                 console.log(pokemon.name,pokemon.type,pokemon.power);
             }}>
