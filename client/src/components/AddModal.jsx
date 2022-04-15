@@ -1,8 +1,9 @@
 import { Box, Button, MenuItem, Modal, TextField, Typography} from '@mui/material'
 import React from 'react'
 import pokemonTypes from '../data/pokemonTypes'
+import axios from 'axios'
 
-const AddModal = ({addModalOpen, setAddModalOpen,addPokemonName,setAddPokemonName,addPokemonType,setAddPokemonType,addPokemonPower,setAddPokemonPower}) => {
+const AddModal = ({setPokemonArray,addModalOpen, setAddModalOpen,addPokemonName,setAddPokemonName,addPokemonType,setAddPokemonType,addPokemonPower,setAddPokemonPower}) => {
   return (
       <div>
           <Modal 
@@ -67,9 +68,17 @@ const AddModal = ({addModalOpen, setAddModalOpen,addPokemonName,setAddPokemonNam
                     variant="contained" 
                     color='success'
                     fullWidth
-                    onClick={()=>{
+                    onClick={async()=>{
                         setAddModalOpen(false);
+                        const response = await axios.post('http://localhost:8000/pokemon/add',{
+                          name: addPokemonName,
+                          type: addPokemonType,
+                          power: addPokemonPower
+                        })
                         console.log(addPokemonName,addPokemonType,addPokemonPower);
+                        console.log(response);
+                        const responseData = await axios.get('http://localhost:8000/pokemon/getAll');
+                        setPokemonArray(responseData.data);
                     }}
                   >
                       ADD POKEMON

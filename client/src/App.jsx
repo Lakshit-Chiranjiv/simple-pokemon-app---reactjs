@@ -146,6 +146,7 @@ function App() {
       />
       
       <AddModal 
+        setPokemonArray={setPokemonArray}
         addModalOpen={addModalOpen} 
         setAddModalOpen={setAddModalOpen}
         addPokemonName={addPokemonName}
